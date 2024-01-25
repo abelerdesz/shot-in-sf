@@ -1,6 +1,6 @@
 import { Container, Heading, Theme } from '@radix-ui/themes'
 
-function App() {
+export const App = () => {
   return (
     <Theme>
       <Container size="4">
@@ -9,5 +9,3 @@ function App() {
     </Theme>
   )
 }
-
-export default App
