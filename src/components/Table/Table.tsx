@@ -1,8 +1,8 @@
-import { useMemo, useState } from "react"
-import { DropdownText, StyledTable } from "./styles"
-import { v4 } from "uuid"
-import { Box, DropdownMenu, Flex, IconButton, Switch } from "@radix-ui/themes"
-import { MixerHorizontalIcon } from "@radix-ui/react-icons"
+import { useMemo, useState } from 'react'
+import { DropdownText, StyledTable } from './styles'
+import { v4 } from 'uuid'
+import { Box, DropdownMenu, Flex, IconButton, Switch } from '@radix-ui/themes'
+import { MixerHorizontalIcon } from '@radix-ui/react-icons'
 
 interface Column {
   key: string
@@ -70,7 +70,7 @@ export const Table = (props: Props) => {
               >
                 <DropdownText as="label" size="2">
                   <Flex gap="2">
-                    <Switch checked={displayedColumns.includes(column.key)} />{" "}
+                    <Switch checked={displayedColumns.includes(column.key)} />{' '}
                     {column.title}
                   </Flex>
                 </DropdownText>
