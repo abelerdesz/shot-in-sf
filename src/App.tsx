@@ -1,10 +1,12 @@
-import { Heading } from '@radix-ui/themes'
+import { Container, Heading, Theme } from '@radix-ui/themes'
 
 function App() {
   return (
-    <>
-      <Heading size="8">Shot in SF</Heading>
-    </>
+    <Theme>
+      <Container size="4">
+        <Heading size="8">Shot in SF</Heading>
+      </Container>
+    </Theme>
   )
 }
 
