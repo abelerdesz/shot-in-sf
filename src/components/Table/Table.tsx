@@ -1,12 +1,28 @@
 import { useMemo, useState } from 'react'
-import { DropdownText, StyledTable } from './styles'
+import {
+  DropdownText,
+  StyledTable,
+  TableCell,
+  TableHeaderRow,
+  TableBodyRow,
+  StyledTextFieldRoot,
+} from './styles'
 import { v4 } from 'uuid'
-import { Box, DropdownMenu, Flex, IconButton, Switch } from '@radix-ui/themes'
-import { MixerHorizontalIcon } from '@radix-ui/react-icons'
+import {
+  Box,
+  DropdownMenu,
+  Flex,
+  IconButton,
+  Switch,
+  TextField,
+} from '@radix-ui/themes'
+import { MagnifyingGlassIcon, MixerHorizontalIcon } from '@radix-ui/react-icons'
 
 interface Column {
   key: string
   title: string
+  singleLine?: boolean
+  minWidth?: number
 }
 
 interface RowData {
@@ -54,11 +70,19 @@ export const Table = (props: Props) => {
   )
 
   return (
-    <Box position="relative">
-      <Box position="absolute" top="0" right="0">
+    <Box>
+      <Flex my="8" gap="3">
+        <StyledTextFieldRoot>
+          <TextField.Input size="3" placeholder="Filter the results…" />
+          <TextField.Slot>
+            <IconButton size="3" variant="ghost">
+              <MagnifyingGlassIcon height="20" width="20" />
+            </IconButton>
+          </TextField.Slot>
+        </StyledTextFieldRoot>
         <DropdownMenu.Root dir="rtl">
           <DropdownMenu.Trigger>
-            <IconButton>
+            <IconButton size="3">
               <MixerHorizontalIcon width={20} height={20} />
             </IconButton>
           </DropdownMenu.Trigger>
@@ -78,24 +102,34 @@ export const Table = (props: Props) => {
             ))}
           </DropdownMenu.Content>
         </DropdownMenu.Root>
-      </Box>
+      </Flex>
       <StyledTable>
         <thead>
-          <tr>
+          <TableHeaderRow>
             {columns.map((column) => (
-              <th key={column.key}>{column.title}</th>
+              <TableCell
+                as="th"
+                singleLine={column.singleLine}
+                key={column.key}
+              >
+                {column.title}
+              </TableCell>
             ))}
-          </tr>
+          </TableHeaderRow>
         </thead>
         <tbody>
           {renderedData.map((row) => (
-            <tr key={row.id}>
+            <TableBodyRow key={row.id}>
               {columns.map((column) => (
-                <td key={`row-${row.id}-col-${column.key}`}>
+                <TableCell
+                  singleLine={column.singleLine}
+                  minWidth={column.minWidth}
+                  key={`row-${row.id}-col-${column.key}`}
+                >
                   {row[column.key] as string | number}
-                </td>
+                </TableCell>
               ))}
-            </tr>
+            </TableBodyRow>
           ))}
         </tbody>
       </StyledTable>
