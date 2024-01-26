@@ -45,6 +45,7 @@ export const QueryControls = ({
             variant="soft"
             color="gray"
             type="submit"
+            disabled={!filterQuery.length}
           >
             Search
             <MagnifyingGlassIcon height="16" width="16" />
