@@ -4,9 +4,9 @@ import {
   CircleIcon,
   MixerHorizontalIcon,
 } from '@radix-ui/react-icons'
-import { Spinner } from '../Spinner/Spinner'
+import { Spinner } from '../../Spinner/Spinner'
 import { DropdownText, FullWidthDropdownSeparator } from './styles'
-import type { Column } from '../Table/types'
+import type { Column } from '../types'
 
 interface Props {
   columns: Column[]
@@ -17,7 +17,7 @@ interface Props {
   isFiltering: boolean
 }
 
-export const TableColumnControls = ({
+export const ColumnControls = ({
   columns,
   displayedColumns,
   setDisplayedColumns,

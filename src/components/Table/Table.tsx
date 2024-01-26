@@ -2,8 +2,8 @@ import { useMemo, useState } from 'react'
 import { v4 } from 'uuid'
 import { Text, Flex } from '@radix-ui/themes'
 import { Spinner } from '../Spinner/Spinner'
-import { TableQueryControls } from '../TableQueryControls'
-import { TableColumnControls } from '../TableColumnControls'
+import { QueryControls } from './QueryControls'
+import { ColumnControls } from './ColumnControls'
 import {
   StyledTable,
   TableCell,
@@ -59,13 +59,13 @@ export const Table = (props: Props) => {
   return (
     <>
       <Flex mb="8" gap="3">
-        <TableQueryControls
+        <QueryControls
           filterQuery={filterQuery}
           setFilterQuery={setFilterQuery}
           applyFilter={applyFilter}
           error={error}
         />
-        <TableColumnControls
+        <ColumnControls
           columns={props.columns}
           defaultColumns={props.defaultColumns}
           displayedColumns={displayedColumns}

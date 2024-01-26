@@ -10,7 +10,7 @@ interface Props {
   error: string | null
 }
 
-export const TableQueryControls = ({
+export const QueryControls = ({
   filterQuery,
   setFilterQuery,
   applyFilter,
