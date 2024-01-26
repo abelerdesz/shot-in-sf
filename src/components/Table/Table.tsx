@@ -12,6 +12,7 @@ import {
   TableWrapper,
 } from './styles'
 import { useDataFilter } from '../../hooks/useDataFilter'
+import { EmptyTableMessage } from './EmptyTableMessage/EmptyTableMessage'
 import type { Column } from './types'
 
 interface RowData {
@@ -111,11 +112,11 @@ export const Table = (props: Props) => {
       </TableWrapper>
 
       {!renderedResults.length && (
-        <Flex my="9" justify="center" align="center">
-          <Text size="8" weight="light" color="gray">
-            No results!
-          </Text>
-        </Flex>
+        <EmptyTableMessage>No results!</EmptyTableMessage>
+      )}
+
+      {!displayedColumns.length && (
+        <EmptyTableMessage>No columns selected.</EmptyTableMessage>
       )}
     </>
   )
