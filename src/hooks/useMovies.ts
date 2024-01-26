@@ -5,14 +5,13 @@ const MOVIES_JSON_URL = 'https://data.sfgov.org/resource/yitu-d5am.json'
 const textDecoder = new TextDecoder('utf-8')
 
 export const useMovies = () => {
-  const [movies, setMovies] = useState<Movie[] | null>(null)
-  const [hasError, setError] = useState(false)
-  const [isLoading, setLoading] = useState(true)
+  const [movies, setMovies] = useState<Movie[]>([])
+  const [isFetching, setIsFetching] = useState(true)
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        setLoading(true)
+        setIsFetching(true)
         const resp = await fetch(MOVIES_JSON_URL)
 
         if (resp.body) {
@@ -36,10 +35,10 @@ export const useMovies = () => {
           }
         }
       } catch (e) {
-        setError(true)
+        console.error(e)
       }
 
-      setLoading(false)
+      setIsFetching(false)
     }
 
     fetchMovies()
@@ -47,7 +46,6 @@ export const useMovies = () => {
 
   return {
     movies,
-    hasError,
-    isLoading
+    isFetching,
   }
 }

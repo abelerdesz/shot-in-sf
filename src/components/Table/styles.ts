@@ -1,14 +1,14 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Text, TextField } from '@radix-ui/themes'
+
+export const TableWrapper = styled.div`
+  overflow-x: scroll;
+  border-radius: var(--radius-4);
+`
 
 export const StyledTable = styled.table`
   width: 100%;
   border-spacing: 0;
-`
-
-export const DropdownText = styled(Text)`
-  pointer-events: none;
 `
 
 export const TableHeaderRow = styled.tr`
@@ -23,18 +23,18 @@ export const TableBodyRow = styled.tr`
 
 export const TableCell = styled.td<{
   singleLine?: boolean
-  minWidth?: number
+  width?: number
+  maxWidth?: number
+  as?: string
 }>(
   (props) => css`
     text-align: left;
     vertical-align: top;
-    padding: var(--space-3);
+    padding: var(--space-4);
 
+    ${props.as === 'th' && 'padding: var(--space-4) var(--space-4);'}
     ${props.singleLine && 'white-space: nowrap;'}
-    ${props.minWidth && `min-width: ${props.minWidth}px;`}
+    ${props.width && `width: ${props.width}px;`}
+    ${props.maxWidth && `max-width: ${props.maxWidth}px;`}
   `
 )
-
-export const StyledTextFieldRoot = styled(TextField.Root)`
-  flex-grow: 1;
-`
