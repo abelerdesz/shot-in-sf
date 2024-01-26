@@ -1,12 +1,12 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-export const TableWrapper = styled.div`
+export const TableScrollWrapper = styled.div`
   overflow-x: scroll;
   border-radius: var(--radius-4);
 `
 
-export const StyledTable = styled.table`
+export const TableElement = styled.table`
   width: 100%;
   border-spacing: 0;
 `

@@ -5,11 +5,11 @@ import { Spinner } from '../Spinner/Spinner'
 import { QueryControls } from './QueryControls'
 import { ColumnControls } from './ColumnControls'
 import {
-  StyledTable,
+  TableElement,
   TableCell,
   TableHeaderRow,
   TableBodyRow,
-  TableWrapper,
+  TableScrollWrapper,
 } from './styles'
 import { useDataFilter } from '../../hooks/useDataFilter'
 import { EmptyTableMessage } from './EmptyTableMessage/EmptyTableMessage'
@@ -76,8 +76,8 @@ export const Table = (props: Props) => {
         />
       </Flex>
 
-      <TableWrapper>
-        <StyledTable>
+      <TableScrollWrapper>
+        <TableElement>
           <thead>
             <TableHeaderRow>
               {columns.map((column) => (
@@ -108,8 +108,8 @@ export const Table = (props: Props) => {
               </TableBodyRow>
             ))}
           </tbody>
-        </StyledTable>
-      </TableWrapper>
+        </TableElement>
+      </TableScrollWrapper>
 
       {!renderedResults.length && (
         <EmptyTableMessage>No results!</EmptyTableMessage>
